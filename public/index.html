@@ -1,0 +1,1211 @@
+<html lang="en" dir="ltr" data-capo="">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <title>FCreator</title>
+    <link rel="stylesheet" href="css/app.css?v=2">
+  </head>
+  <body>
+    <div class="modal" id="video-svojstava" style="display: block;">
+      <div class="scontainer" style="width:700px;">
+        <div class="modal-header">
+          <div class="row">
+            <div class="col-md-12" style="text-align: right;background-color:#000000;padding:15px;">
+              <a href="javascript:closePopap('video-svojstava');" style="color : #ffffff; text-decoration : none;">
+                <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <use xlink:href="#search-clear"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-content">
+          <div class="row">
+            <div class="col-md-12 center" style="color:#000000" id="start-video"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="video-editor">
+      <div class="scontainer">
+        <div class="modal-header">
+          <div class="row">
+            <div class="col-md-12" style="text-align: right;background-color:#000000;padding:15px;">
+              <a href="javascript:closePopap('video-editor');">
+                <svg width="18px" height="18px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <use xlink:href="#search-clear"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12 center">
+                <div class="vid-editor width-700"></div>
+              </div>
+            </div>
+            <div class="row ">
+              <div class="col-md-12  center">
+                <div class="double_range_slider_box">
+                  <div class="double_range_slider">
+                    <span class="range_track" id="range_track"></span>
+                    <input type="range" class="min" id="r1" min="0" max="0" value="0" step="0">
+                    <input type="range" class="max" id="r2" min="0" max="0" value="0" step="0">
+                    <div class="minvalue"></div>
+                    <div class="maxvalue"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 center">
+                <button onclick="resizeVideo()" style="width:132px;height:30px;border-radius:4px 4px 4px 4px;">Snimi promenu</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layout-default">
+      <div class="layout-default__sprite">
+        <svg style="display:none;">
+          <symbol id="svg-main-navigation-tab-icon-media">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5167 6.09163C13.795 6.60276 14.282 6.96734 14.8509 7.09026C16.6517 7.47941 18 9.08457 18 11C18 13.2091 16.2091 15 14 15V17C17.3137 17 20 14.3137 20 11C20 8.1232 17.9754 5.71928 15.2733 5.13538C14.2565 3.26758 12.2763 2 10 2C7.72372 2 5.7435 3.26758 4.7267 5.13538C2.02462 5.71928 0 8.1232 0 11C0 14.3137 2.68629 17 6 17V15C3.79086 15 2 13.2091 2 11C2 9.08457 3.3483 7.47941 5.14914 7.09026C5.71796 6.96734 6.20504 6.60276 6.48329 6.09163C7.16395 4.8413 8.48519 4 10 4C11.5148 4 12.8361 4.8413 13.5167 6.09163ZM11 12.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071 11.2929L10.7071 9.29289L10 8.58579L9.29289 9.29289L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L9 12.4142V18C9 18.5523 9.44771 19 10 19C10.5523 19 11 18.5523 11 18V12.4142Z"></path>
+          </symbol>
+          <symbol id="svg-menu" viewBox="0 0 512 497.435">
+            <path d="M9.576 0h492.849C507.692 0 512 4.314 512 9.576v61.179c0 5.263-4.313 9.576-9.575 9.576H9.576C4.313 80.331 0 76.023 0 70.755V9.576C0 4.308 4.308 0 9.576 0zm0 417.104h492.849c5.267 0 9.575 4.314 9.575 9.576v61.179c0 5.263-4.313 9.576-9.575 9.576H9.576c-5.263 0-9.576-4.308-9.576-9.576V426.68c0-5.268 4.308-9.576 9.576-9.576zm0-139.035h492.849c5.267 0 9.575 4.313 9.575 9.576v61.179c0 5.262-4.313 9.576-9.575 9.576H9.576C4.313 358.4 0 354.092 0 348.824v-61.179c0-5.268 4.308-9.576 9.576-9.576zm0-139.033h492.849c5.267 0 9.575 4.313 9.575 9.575v61.179c0 5.263-4.313 9.576-9.575 9.576H9.576c-5.263 0-9.576-4.307-9.576-9.576v-61.179c0-5.268 4.308-9.575 9.576-9.575z" />
+            </path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-settings" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 4H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1ZM4 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H4Zm6 5a1 1 0 0 1 1-1h2.9c.6 0 1.1.5 1.1 1.1V10a1 1 0 1 1-2 0V8h-2a1 1 0 0 1-1-1Zm-1 7a1 1 0 1 0 0-2H7v-2a1 1 0 0 0-2 0v2.9c0 .6.5 1.1 1.1 1.1H9Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-text">
+            <path d="M3 4C3 3.44772 3.44772 3 4 3H16C16.5523 3 17 3.44772 17 4V6C17 6.55228 16.5523 7 16 7C15.4477 7 15 6.55228 15 6V5H11V15H12C12.5523 15 13 15.4477 13 16C13 16.5523 12.5523 17 12 17H8C7.44772 17 7 16.5523 7 16C7 15.4477 7.44772 15 8 15H9V5H5V6C5 6.55228 4.55228 7 4 7C3.44772 7 3 6.55228 3 6V4Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-stock-audio" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 5a3 3 0 0 0-3.6-3l-6 1.4a3 3 0 0 0-2.4 3v5.8A3 3 0 1 0 8 15V6.3c0-.5.3-.9.8-1l6-1.3A1 1 0 0 1 16 5v5.2a3 3 0 1 0 2 2.8V5Zm-2 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0ZM6 15a1 1 0 1 0-2 0 1 1 0 0 0 2 0Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-stock-videos" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 4h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1ZM1 5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V5Zm7 2.46v5.08c0 .4.46.64.79.4l3.62-2.53a.5.5 0 0 0 0-.82L8.8 7.05a.5.5 0 0 0-.79.41Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-stock-images" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 4H4a1 1 0 0 0-1 1v8.97l3.56-3.88a2 2 0 0 1 2.89-.06L15.4 16h.6a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1ZM4 16a1 1 0 0 1-.14 0l4.17-4.55L12.6 16H4ZM4 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H4Zm8.5 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-elements" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.43 11.4 11H3.6l3.9-6.57Zm2.87.93L8.62 2.39a1.3 1.3 0 0 0-2.24 0l-5.12 8.65A1.3 1.3 0 0 0 2.38 13h3.8a6.5 6.5 0 1 0 4.2-7.64Zm1.05 1.77 2.32 3.9A1.3 1.3 0 0 1 12.62 13H8.26a4.5 4.5 0 1 0 3.16-5.87Z"></path>
+          </symbol>
+          <symbol id="svg-main-navigation-tab-icon-recording" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17ZM1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10ZM10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6Z"></path>
+          </symbol>
+          <symbol id="media-tts" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 17C9 17.5523 9.44771 18 10 18C10.5523 18 11 17.5523 11 17L11 3C11 2.44771 10.5523 2 10 2C9.44771 2 9 2.44771 9 3L9 17ZM6 15.5C5.44772 15.5 5 15.0523 5 14.5V5.5C5 4.94771 5.44772 4.5 6 4.5C6.55228 4.5 7 4.94772 7 5.5V14.5C7 15.0523 6.55228 15.5 6 15.5ZM14 15.5C13.4477 15.5 13 15.0523 13 14.5V5.5C13 4.94771 13.4477 4.5 14 4.5C14.5523 4.5 15 4.94772 15 5.5V14.5C15 15.0523 14.5523 15.5 14 15.5ZM1 12C1 12.5523 1.44772 13 2 13C2.55228 13 3 12.5523 3 12V8C3 7.44772 2.55228 7 2 7C1.44772 7 1 7.44772 1 8V12ZM18 13C17.4477 13 17 12.5523 17 12V8C17 7.44772 17.4477 7 18 7C18.5523 7 19 7.44772 19 8V12C19 12.5523 18.5523 13 18 13Z"></path>
+          </symbol>
+          <symbol id="play" viewBox="0 0 20 20">
+            <path d="M7.844 4.174A1.2 1.2 0 0 0 6 5.186v9.628a1.2 1.2 0 0 0 1.844 1.012l7.565-4.814a1.2 1.2 0 0 0 0-2.024L7.844 4.174Z" fill="currentColor"></path>
+          </symbol>
+          <symbol id="pause" viewBox="0 0 20 20">
+            <rect x="12" y="4" width="3" height="12" rx="1.5"></rect>
+            <rect x="5" y="4" width="3" height="12" rx="1.5"></rect>
+          </symbol>
+          <symbol id="dots" viewBox="0 0 20 20">
+            <circle cx="18" cy="10" r="2"></circle>
+            <circle cx="10" cy="10" r="2"></circle>
+            <circle cx="2" cy="10" r="2"></circle>
+          </symbol>
+          <symbol id="menu" viewBox="0 0 20 20">
+            <circle cx="18" cy="10" r="2"></circle>
+            <circle cx="10" cy="10" r="2"></circle>
+            <circle cx="2" cy="10" r="2"></circle>
+          </symbol>
+          <symbol id="svg-tool-edit" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 4.1a1 1 0 00-1.4 0l-8.3 8.3a1 1 0 00-.3.7V16h3l.6-.3L16 7.4c.4-.3.4-1 0-1.4l-2-1.9zM11 2.7a3 3 0 014.3 0l1.9 2a3 3 0 010 4.2L9 17a3 3 0 01-2 .9H4a2 2 0 01-2-2v-3c0-.7.3-1.5.9-2L11 2.7z"></path>
+          </symbol>
+          <symbol id="svg-tl-del" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.08114 2.5C8.43549 2.5 7.86229 2.91315 7.65811 3.52566L7.5 4H3.5C2.94772 4 2.5 4.44772 2.5 5C2.5 5.55228 2.94772 6 3.5 6H3.99995C3.99998 6.02639 4.00104 6.05299 4.00318 6.07975L4.65594 14.2392C4.78067 15.7983 6.08231 17 7.64639 17H12.3536C13.9177 17 15.2193 15.7983 15.3441 14.2392L15.9968 6.07975C15.999 6.05299 16 6.02639 16.0001 6H16.5C17.0523 6 17.5 5.55228 17.5 5C17.5 4.44772 17.0523 4 16.5 4H12.5L12.3419 3.52566C12.1377 2.91315 11.5645 2.5 10.9189 2.5H9.08114ZM6.00319 6H13.9968L13.3504 14.0797C13.3088 14.5994 12.875 15 12.3536 15H7.64639C7.12503 15 6.69115 14.5994 6.64957 14.0797L6.00319 6Z"></path>
+          </symbol>
+          <symbol id="search-clear" viewBox="0 0 18 18">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 18A9 9 0 1 0 9 0a9 9 0 0 0 0 18Zm3.5-12.5c.3.3.3.7 0 1L10.1 9l2.4 2.5a.7.7 0 1 1-1 1L9 10.1l-2.5 2.4a.7.7 0 0 1-1-1L7.9 9 5.5 6.5a.8.8 0 0 1 1-1L9 7.9l2.5-2.4c.3-.3.7-.3 1 0Z"></path>
+          </symbol>
+          <symbol id="svg-header-setting" viewBox="0 0 34 34">
+            <path d="M15.16 28.85a11.97 11.97 0 003.68 0 1 1 0 00.83-.8l.44-2.3c.3-.1.6-.23.88-.36l1.93 1.31a1 1 0 001.15-.02c1-.73 1.88-1.6 2.6-2.6a1 1 0 00.03-1.16L25.38 21c.14-.29.26-.58.37-.88l2.3-.44a1 1 0 00.8-.83 11.89 11.89 0 000-3.67 1 1 0 00-.8-.83l-2.3-.44c-.1-.3-.23-.6-.36-.88l1.31-1.94a1 1 0 00-.02-1.15c-.73-1-1.6-1.88-2.6-2.6a1 1 0 00-1.15-.02L21 8.62a9.25 9.25 0 00-.9-.36l-.43-2.3a1 1 0 00-.83-.8c-1.33-.21-2.33-.21-3.68 0a1 1 0 00-.83.8l-.44 2.3c-.3.1-.6.22-.88.36L11.08 7.3a1 1 0 00-1.16.03c-1 .72-1.87 1.6-2.6 2.6a1 1 0 00-.02 1.15L8.62 13c-.14.29-.26.58-.37.88l-2.3.44a1 1 0 00-.8.83 12.03 12.03 0 000 3.68 1 1 0 00.8.83l2.3.44c.11.3.23.6.37.88L7.3 22.93a1 1 0 00.03 1.15c.72 1 1.6 1.87 2.6 2.6a1 1 0 001.15.02l1.94-1.31c.28.13.57.25.87.36l.44 2.3a1 1 0 00.83.8zm2.68-1.9c-.6.07-1.1.07-1.68 0l-.42-2.16a1 1 0 00-.7-.78 7.24 7.24 0 01-1.6-.66 1 1 0 00-1.06.05l-1.82 1.24c-.43-.37-.83-.76-1.19-1.2l1.24-1.81a1 1 0 00.04-1.06c-.28-.5-.5-1.04-.66-1.6a1 1 0 00-.77-.71l-2.18-.42a8.67 8.67 0 010-1.68l2.17-.41a1 1 0 00.78-.71c.16-.57.38-1.1.66-1.6a1 1 0 00-.04-1.06l-1.24-1.82c.36-.43.76-.83 1.19-1.19l1.82 1.24a1 1 0 001.05.04c.5-.28 1.03-.5 1.6-.66a1 1 0 00.71-.77l.42-2.18a8.15 8.15 0 011.68 0l.41 2.17a1 1 0 00.71.78c.57.16 1.11.38 1.61.66a1 1 0 001.06-.04l1.82-1.24c.43.36.82.76 1.19 1.2l-1.24 1.82a1 1 0 00-.05 1.05c.28.5.5 1.03.66 1.6.1.36.4.64.78.7l2.17.42a8.57 8.57 0 010 1.68l-2.17.42a1 1 0 00-.78.7c-.16.57-.38 1.11-.66 1.6a1 1 0 00.04 1.06l1.24 1.82c-.36.43-.76.83-1.19 1.2l-1.82-1.24a1 1 0 00-1.05-.05c-.5.28-1.04.5-1.6.66a1 1 0 00-.72.78l-.41 2.17zM13 17a4 4 0 108.01 0A4 4 0 0013 17zm2 0a2 2 0 114 0 2 2 0 01-4 0z"></path>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-square" viewBox="0 0 20 20">
+            <rect x="2" y="2" width="16" height="16" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="option-check" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M13.5303 3.4697a.75.75 0 0 1 0 1.0606L7 11.0607 3.4697 7.5303a.75.75 0 0 1 1.0606-1.0606L7 8.9393l5.4697-5.4696a.75.75 0 0 1 1.0606 0Z" clip-rule="evenodd"></path>
+          </symbol>
+          <symbol id="select-arrows" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10.4801 3.9238 10 3.5237l-.4802.4001-3 2.5a.75.75 0 1 0 .9603 1.1523L10 5.4762l2.5198 2.1a.75.75 0 0 0 .9603-1.1524l-3-2.5Zm-.9603 12.1523.4802.4001.4801-.4001 3-2.5a.75.75 0 1 0-.9603-1.1523L10 14.5237 7.48 12.4238a.75.75 0 1 0-.9603 1.1523l3 2.5Z" clip-rule="evenodd"></path>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-widescreen" viewBox="0 0 20 20">
+            <rect x="1" y="5" width="18" height="10" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-full-portrait" viewBox="0 0 20 20">
+            <rect x="5" y="1" width="10" height="18" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-landscape" viewBox="0 0 20 20">
+            <rect x="2" y="4" width="16" height="12" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-portrait" viewBox="0 0 20 20">
+            <rect x="4" y="2" width="12" height="16" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-landscape-post" viewBox="0 0 20 20">
+            <rect x="2" y="4" width="16" height="12" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-vertical" viewBox="0 0 20 20">
+            <rect x="4.5" y="1.5" width="11" height="17" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-ultrawide" viewBox="0 0 20 20">
+            <rect x="1" y="6" width="18" height="8" rx="1" stroke-width="2"></rect>
+          </symbol>
+          <symbol id="canvas-aspect-ratio-youtube" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.0106 4.0871C17.786 4.29449 18.3909 4.90167 18.6006 5.67706C19.149 7.88917 19.1133 12.0714 18.6121 14.3181C18.4047 15.0935 17.7975 15.6984 17.0222 15.9081C14.8331 16.4496 5.02837 16.3827 2.96604 15.9081C2.19065 15.7007 1.58577 15.0935 1.37609 14.3181C0.858774 12.2097 0.894491 7.75091 1.36456 5.68858C1.57195 4.91319 2.17913 4.30832 2.95452 4.09863C5.88095 3.48799 15.9691 3.68501 17.0106 4.0871ZM8.25488 7.30158L12.9556 9.99759L8.25488 12.6936V7.30158Z"></path>
+          </symbol>
+          <symbol id="svg-save" viewBox="0 0 30 30">
+            <path ill-rule="evenodd" clip-rule="evenodd" d="M22,4h-2v6c0,0.552-0.448,1-1,1h-9c-0.552,0-1-0.448-1-1V4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18  c1.105,0,2-0.895,2-2V8L22,4z M22,24H8v-6c0-1.105,0.895-2,2-2h10c1.105,0,2,0.895,2,2V24z" />
+            <rect height="5" width="2" x="16" y="4" />
+            </path>
+          </symbol>
+          <symbol id="svg-save-video" viewBox="0 0 108.1 122.88">
+            <path ill-rule="evenodd" clip-rule="evenodd" d="M17.61,47.71h52.57c4.88,0,8.86,3.99,8.86,8.86v38.52c0,4.87-3.99,8.86-8.86,8.86H53.94l11.79,18.92H54.75 l-12.86-17.29l-12.99,17.29H17.76l11.72-18.92H17.61c-4.87,0-8.86-3.99-8.86-8.86V56.57C8.75,51.7,12.73,47.71,17.61,47.71 L17.61,47.71z M17.83,9.22c4.92,0,9.38,2,12.61,5.22c3.23,3.23,5.22,7.69,5.22,12.61c0,4.92-2,9.38-5.22,12.61 c-3.23,3.23-7.69,5.22-12.61,5.22s-9.38-2-12.61-5.22C2,36.44,0,31.98,0,27.06c0-4.92,2-9.38,5.22-12.61S12.91,9.22,17.83,9.22 L17.83,9.22z M24.93,19.96c-1.82-1.82-4.33-2.94-7.1-2.94c-2.77,0-5.28,1.12-7.1,2.94c-1.82,1.82-2.94,4.33-2.94,7.1 c0,2.77,1.12,5.28,2.94,7.1s4.33,2.94,7.1,2.94c2.77,0,5.28-1.12,7.1-2.94s2.94-4.33,2.94-7.1C27.88,24.29,26.75,21.77,24.93,19.96 L24.93,19.96z M60.62,0c6.2,0,11.81,2.51,15.87,6.57c4.06,4.06,6.57,9.67,6.57,15.87c0,6.2-2.51,11.81-6.57,15.87 c-4.06,4.06-9.67,6.57-15.87,6.57s-11.81-2.51-15.87-6.57c-4.06-4.06-6.57-9.67-6.57-15.87c0-6.2,2.51-11.81,6.57-15.87 S54.42,0,60.62,0L60.62,0z M70.88,12.19c-2.62-2.62-6.25-4.25-10.26-4.25s-7.63,1.62-10.26,4.25c-2.62,2.62-4.25,6.25-4.25,10.26 s1.62,7.63,4.25,10.26c2.62,2.62,6.25,4.25,10.26,4.25s7.63-1.62,10.26-4.25s4.25-6.25,4.25-10.26 C75.13,18.44,73.5,14.81,70.88,12.19L70.88,12.19z M84.07,89.97V61.52l24.02-14.16v57.15L84.07,89.97L84.07,89.97z"></path>
+          </symbol>
+          <symbol id="svg-text-neravan" viewBox="0 0 32 32">
+            <rect fill="none" height="32" width="32" />
+            </g>
+            <g id="document_x5F_text_x5F_edit">
+              <path d="M24,14.059V5.584L18.414,0H0v32h24v-0.059c4.499-0.5,7.998-4.309,8-8.941C31.998,18.366,28.499,14.556,24,14.059z    M17.998,2.413L21.586,6h-3.588V2.413z M2,30V1.998h14v6.001h6v6.06c-1.752,0.194-3.352,0.89-4.652,1.941H4v2h11.517   c-0.412,0.616-0.743,1.289-0.994,2H4v2h10.059C14.022,22.329,14,22.661,14,23c0,2.829,1.308,5.351,3.349,7H2z M23,29.883   c-3.801-0.009-6.876-3.084-6.885-6.883c0.009-3.801,3.084-6.876,6.885-6.885c3.799,0.009,6.874,3.084,6.883,6.885   C29.874,26.799,26.799,29.874,23,29.883z M20,12H4v2h16V12z" />
+              </path>
+              <g>
+                <polygon points="22,27 19,27 19,24   " />
+                <rect height="4.243" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 56.5269 20.5858)" width="7.071" x="20.464" y="19.879" />
+              </g>
+          </symbol>
+          <symbol id="svg-video-edit" viewBox="0 0 122.88 110.35">
+            <path d="M6.32,0v6.22h12.22V0h6.32v14.88h73.15V0h6.32v6.22h12.22V0h6.32v110.35h-6.32v-7.19h-12.22v7.19h-6.32V94.79H24.87v15.56 h-6.32v-7.19H6.32v7.19H0V0H6.32L6.32,0z M50.9,57.41l12.91-13.4l8.36,8.05L59.12,65.63L50.9,57.41L50.9,57.41L50.9,57.41z M71.73,38.51c-0.39-0.37-0.84-0.56-1.35-0.54c-0.51,0-0.96,0.2-1.32,0.59l-2.98,3.1l8.36,8.08l3.01-3.15 c0.37-0.37,0.51-0.84,0.51-1.35c0-0.51-0.2-0.99-0.56-1.32L71.73,38.51L71.73,38.51L71.73,38.51z M56.08,68.8 c-1.1,0.37-2.22,0.7-3.32,1.07c-1.1,0.37-2.2,0.73-3.32,1.1c-2.62,0.84-4.05,1.32-4.36,1.41c-0.31,0.08-0.11-1.13,0.53-3.66 l2.08-7.97l0.17-0.18L56.08,68.8L56.08,68.8L56.08,68.8L56.08,68.8z M98.01,21.2H24.87v67.27h73.15V21.2L98.01,21.2z M116.56,96.84 v-11.8h-12.22v11.8H116.56L116.56,96.84z M116.56,78.72v-11.8h-12.22v11.8H116.56L116.56,78.72z M116.56,60.59v-11.8h-12.22v11.8 H116.56L116.56,60.59z M116.56,42.47v-11.8h-12.22v11.8H116.56L116.56,42.47z M116.56,24.35v-11.8h-12.22v11.8H116.56L116.56,24.35 z M18.54,96.84v-11.8H6.32v11.8H18.54L18.54,96.84z M18.54,78.72v-11.8H6.32v11.8H18.54L18.54,78.72z M18.54,60.59v-11.8H6.32v11.8 H18.54L18.54,60.59z M18.54,42.47v-11.8H6.32v11.8H18.54L18.54,42.47z M18.54,24.35v-11.8H6.32v11.8H18.54L18.54,24.35z"></path>
+          </symbol>
+            <symbol id="svg-back" viewBox="0 0 26.676 26.676">
+             <path d="M26.105,21.891c-0.229,0-0.439-0.131-0.529-0.346l0,0c-0.066-0.156-1.716-3.857-7.885-4.59 c-1.285-0.156-2.824-0.236-4.693-0.25v4.613c0,0.213-0.115,0.406-0.304,0.508c-0.188,0.098-0.413,0.084-0.588-0.033L0.254,13.815 C0.094,13.708,0,13.528,0,13.339c0-0.191,0.094-0.365,0.254-0.477l11.857-7.979c0.175-0.121,0.398-0.129,0.588-0.029 c0.19,0.102,0.303,0.295,0.303,0.502v4.293c2.578,0.336,13.674,2.33,13.674,11.674c0,0.271-0.191,0.508-0.459,0.562 C26.18,21.891,26.141,21.891,26.105,21.891z"></path>
+            </symbol>
+        </svg>
+      </div>
+    </div>
+    <section>
+      <div class="layout-default__content">
+        <div class="app-editor-layout">
+          <div id="zzzz" class="app-console__content"></div>
+          <div class="app-editor-layout__player">
+            <div class="canvas-holder" id="container" style="width:1280;height:720;	background: #FFFFFF;"></div>
+          </div>
+          <div class="app-editor-layout__options-panel">
+            <div class="app-console app-console--tab-tab-media app-console--variant-dashed app-console--menu-height-extended app-console--bottom-shadow-visible">
+              <div class="app-console__menu" style="--vh: 91px; height: 884px;">
+                <div class="app-console__buttons">
+                  <!--
+                                <button class="app-console-menu-button app-console-menu-button--variant-default" id="save-project" onclick="saveProject();"><span class="app-console-menu-button__icon"><svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#svg-save"></use></svg></span><span class="app-console-menu-button__text">
+                      Sačuvaj  projekat </span></button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" id="save-video" onclick="KreateVideo();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-save-video"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Sačuvaj video </span>
+                  </button>-->
+                  <button class="app-console-menu-button app-console-menu-button--variant-default"  onclick="backToScenes();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-back"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Nazad </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" disabled="disabled" id="animate-all" onclick="showAnimate();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-main-navigation-tab-icon-settings"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Animacija </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" onclick="dodajMultiline();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-text-neravan"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Tekst </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" id="edit-text" disabled="disabled" onclick="edit();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-tool-edit"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Promeni Tekst </span>
+                  </button>
+                  <!--
+                                <button class="app-console-menu-button app-console-menu-button--variant-default" data-testid="console-menu-button-stock-audio"><span class="app-console-menu-button__icon"><svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px"
+											xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="#svg-main-navigation-tab-icon-stock-audio"></use></svg></span><span class="app-console-menu-button__text">
+                        Audio
+
+                      </span></button>-->
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" data-testid="console-menu-button-stock-video" onclick="VideoCreate()">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-main-navigation-tab-icon-stock-videos"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Video </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" disabled="disabled" data-testid="console-menu-button-stock-video" id="v-edit" onclick="VideoEdit()">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-video-edit"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Promeni video </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" data-testid="console-menu-button-stock-image" onclick="imageCreate();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-main-navigation-tab-icon-stock-images"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Nova slika </span>
+                  </button>
+                  <button class="app-console-menu-button app-console-menu-button--variant-default" disabled="disabled" id="delete-all" onclick="DeletaAll();">
+                    <span class="app-console-menu-button__icon">
+                      <svg class="app-svg-symbol app-svg-symbol--block" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <use xlink:href="#svg-tl-del"></use>
+                      </svg>
+                    </span>
+                    <span class="app-console-menu-button__text"> Briši </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-editor-layout__timeline">
+            <div class="app-timeline app-timeline--console-menu-height-extended">
+              <div class="app-timeline__toolbar app-timeline__toolbar--desktop">
+                <div class="app-timeline-toolbar app-timeline-toolbar--console-menu-height-extended">
+                  <div class="app-timeline-toolbar__left-side"></div>
+                  <div class="app-timeline-toolbar__center-side">
+                    <div class="app-timeline-toolbar__player-controls">
+                      <div class="app-player-controls">
+                        <button class="app-button app-button--variant-icon app-button--rounded-edges-all app-button--size-normal app-button--justified-center app-player-controls__navigation-button app-player-controls__navigation-button" style="width:32px;height:30px;border-radius:4px 4px 4px 4px;">
+                          <span class="app-button__text" onclick="onPlayClick()">
+                            <svg class="app-svg-symbol app-player-controls__button-icon app-player-controls__button-icon" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                              <use xlink:href="#play"></use>
+                            </svg>
+                          </span>
+                        </button>
+                        <button class="app-button app-button--variant-icon app-button--rounded-edges-all app-button--size-normal app-button--justified-center app-player-controls__navigation-button app-player-controls__navigation-button" style="width:32px;height:30px;border-radius:4px 4px 4px 4px;">
+                          <span class="app-button__text" onclick="onPauseClick()">
+                            <svg class="app-svg-symbol app-player-controls__button-icon app-player-controls__button-icon" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                              <use xlink:href="#pause"></use>
+                            </svg>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="app-timeline-toolbar__right-side"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="outline">
+                    <div class="outline-header" id="outline-header"></div>
+                    <div class="outline-scroll-container" id="outline-scroll-container">
+                      <div class="outline-items" id="outline-container"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div id="timeline"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/edjs.js"></script>
+    <script src="js/vanilla-picker-mini.js"></script>
+    <script type="text/javascript" src="js/resize.js"></script>
+    <script src="js/animation-timeline.js"></script>
+    <script src="js/template/textadd.js?v=2"></script>
+    <script src="js/template/imagedd.js"></script>
+    <script src="js/template/videodd.js?v=1"></script>
+    <script src="js/template/animationadd.js"></script>
+    <script src="js/dragable.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/resizer.css" />
+    <script src="js/timeline.js"></script>
+    <script src="js/text2png.js"></script>
+    <script src="js/rotateimg.js"></script>
+    <script src="js/upload.js"></script>
+    <script>
+    let files = [];
+let obj = {};
+let html = '';
+let selectedT, selectedDiv;
+let vremeTrajanja = 9;
+let deleted = [];
+let appsetings = {
+	'width': 1280
+	, 'height': 720
+	, 'background': "#FFFFFF"
+	, 'time': vremeTrajanja
+}
+function backToScenes(){
+  let all = resizer.get();
+	let json_files = {};
+	let json_obj = {};
+	let text, rect;
+	json_files.appsetings = appsetings;
+	json_files.appdata = [];
+	for (var i = 0; i < all.length; i++) {
+    if (all[i].target.getAttribute('data-deleted') == "1") {
+      continue;
+    }
+		if (all[i].options.type == "text") {
+
+			json_obj = {}
+			json_obj.type = all[i].options.type;
+			json_obj.multi = all[i].options.multi;
+			json_obj.multi = all[i].options.multi;
+			json_obj.objid = all[i].options.objid;
+			json_obj.broj = all[i].options.broj;
+			json_obj.animate = all[i].target.getAttribute('data-animate');
+			json_obj.duration = all[i].target.getAttribute('data-duration');
+      json_obj.endanimate = all[i].target.getAttribute('data-endanimate');
+      json_obj.endduration = all[i].target.getAttribute('data-endduration');
+			json_obj.dataMoveFrom = all[i].target.getAttribute('data-movefrom');
+			json_obj.dataMoveTo = all[i].target.getAttribute('data-moveto');
+			json_obj.rotation = all[i].target.angle;
+			json_obj.html = all[i].target.innerHTML.replace(/[\r\n]/g, "");
+      if(json_obj.html=="" || json_obj.html==" "){
+        continue ;
+      }
+			text = all[i].target.style;
+			json_obj.left = text.left;
+			json_obj.top = text.top;
+			json_obj.width = text.width;
+			json_obj.height = text.height;
+      json_obj.fontname = text.fontFamily ;
+			json_obj.fontsize = text.fontSize;
+			if (text.color != '') {
+				json_obj.color = hexToRGB(text.color);
+			} else {
+				json_obj.color = '#000000';
+			}
+			if (text.backgroundColor != '') {
+				json_obj.backgroundColor = hexToRGB(text.backgroundColor);
+			} else {
+				if (text.background != "") {
+					json_obj.backgroundColor = hexToRGB(text.background);
+				} else {
+					json_obj.backgroundColor = "";
+				}
+			}
+			if (text.padding != '') {
+				json_obj.padding = text.padding;
+			} else {
+				json_obj.padding = 0;
+			}
+		}
+		if (all[i].options.type == "image") {
+			json_obj = {}
+			json_obj.type = all[i].options.type;
+			json_obj.objid = all[i].options.objid;
+			json_obj.broj = all[i].options.broj;
+			json_obj.animate = all[i].target.getAttribute('data-animate');
+			json_obj.duration = all[i].target.getAttribute('data-duration');
+      json_obj.endanimate = all[i].target.getAttribute('data-endanimate');
+      json_obj.endduration = all[i].target.getAttribute('data-endduration');
+			json_obj.dataMoveFrom = all[i].target.getAttribute('data-movefrom');
+			json_obj.dataMoveTo = all[i].target.getAttribute('data-moveto');
+			json_obj.childId = all[i].options.obj.childId;
+			json_obj.height_orig = all[i].options.obj.height_orig;
+			json_obj.width_orig = all[i].options.obj.width_orig;
+			json_obj.url = all[i].options.obj.url;
+			text = all[i].target.style;
+			json_obj.left = text.left;
+			json_obj.top = text.top;
+			json_obj.width = text.width;
+			json_obj.height = text.height;
+			json_obj.rotation = all[i].target.angle;
+		}
+		if (all[i].options.type == "video") {
+			json_obj = {}
+			json_obj.type = all[i].options.type;
+			json_obj.objid = all[i].options.objid;
+			json_obj.broj = all[i].options.broj;
+			json_obj.animate = all[i].target.getAttribute('data-animate');
+			json_obj.duration = all[i].target.getAttribute('data-duration');
+      json_obj.endanimate = all[i].target.getAttribute('data-endanimate');
+      json_obj.endduration = all[i].target.getAttribute('data-endduration');
+			json_obj.dataMoveFrom = all[i].target.getAttribute('data-movefrom');
+			json_obj.dataMoveTo = all[i].target.getAttribute('data-moveto');
+      json_obj.data_video_duration= all[i].target.getAttribute('data-video-duration');
+			json_obj.childId = all[i].options.obj.childId;
+			json_obj.height_orig = all[i].options.obj.height_orig;
+			json_obj.width_orig = all[i].options.obj.width_orig;
+			json_obj.url =all[i].target.getAttribute('data-url');
+			text = all[i].target.style;
+			json_obj.left = text.left;
+			json_obj.top = text.top;
+			json_obj.width = text.width;
+			json_obj.height = text.height;
+			json_obj.rotation = all[i].target.angle;
+			json_obj.video_duration = all[i].options.obj.duration;
+		}
+
+		json_files.appdata.push(json_obj);
+	}
+
+    ipcRenderer.send('send-to-scenes',json_files);
+}
+ipcRenderer.on('config', (event, arg) => {
+  closePopap('video-svojstava');
+	vremeTrajanja = arg.time;
+  appsetings.time=arg.time;
+  appsetings.background=arg.background;
+  appsetings.scena=arg.scena;
+  appsetings.width=arg.width;
+  appsetings.height=arg.height;
+  appsetings.effects=arg.effects;
+  appsetings.audio=arg.audio;
+  let aaa=arg.appdata,length=0;
+  for (var i = 0; i < aaa.length; i++) {
+    obj = {};
+   length=  files.length;
+   if(aaa[i].type=="text"){
+     if (typeof aaa[i].ddataMoveFrom === "undefined") {
+       aaa[i].ddataMoveFrom=0;
+     }
+     if (typeof aaa[i].dataMoveTo === "undefined") {
+       aaa[i].dataMoveTo= vremeTrajanja*1000;
+     }
+    obj.type = "text";
+    obj.left = aaa[i].left;
+    obj.top = aaa[i].top;
+    obj.background = aaa[i].backgroundColor;
+    obj.color = aaa[i].color;
+    obj.fontsize =  aaa[i].fontsize;
+    obj.fontname = aaa[i].fontname;
+    obj.text =  aaa[i].html;
+    if(obj.text=="" || obj.text==" "){
+      continue ;
+    }
+    obj.url = "";
+    obj.width =  aaa[i].width;
+    obj.height =aaa[i].height;
+    obj.childId = "text-" + length + "-" + length;
+    obj.objId = "text-" + length;
+    obj.padding =aaa[i].padding;
+    files.push(obj);
+    $("#textc").val('');
+
+      html = '<div id="' + obj.objId +
+        '" class="target"  data-multi="1" data-deleted="0" data-endanimate="'+aaa[i].endanimate+'" data-endduration="'+aaa[i].endduration+'" data-animate="'+aaa[i].animate+'" data-duration="'+aaa[i].duration+'"  data-movefrom="'+parseInt(aaa[i].dataMoveFrom)+'" data-moveto="'+parseInt(aaa[i].dataMoveTo)+'"  style="transform: rotate('+aaa[i].rotation+'deg);font-family:' + obj.fontname + ',padding:' + obj.padding + '; left: ' + obj.left + '; top: ' +
+        obj.top + ';z-index:' + (length + 1) + ';width:' + obj.width + ';height:' + obj.height + ';background-color:' + obj.background +
+        ';color:' + obj.color + ';padding:' + obj.padding + ';font-size:' + obj.fontsize + '"  isLocked="false" isDisabled="false">' + obj
+        .text + '</div>';
+
+    $("#container").append(html);
+    new Dragable($('#' + obj.objId)[0], {
+      type: "text"
+      , objid: obj.objId
+      , broj: length
+      , multi: 1,
+      angle:aaa[i].rotation
+      , textDiv: $('#' + obj.objId)[0]
+      , onClicked: function(type, elem, target, opt) {
+        tectC(type, elem, target, opt);
+      }
+    , }).createTaxt();
+    addKeyframe("tekst " + length, obj.objId, vremeTrajanja,parseInt(aaa[i].dataMoveFrom),parseInt(aaa[i].dataMoveTo));
+    document.getElementById(obj.objId).style.backgroundColor = obj.background;
+    $('#' + obj.objId)[0].style.setProperty('font-family', obj.fontname) ;
+  }else if(aaa[i].type=="image"){
+    obj = {};
+    obj.type = "image";
+    obj.url = aaa[i].url ;
+    obj.left = aaa[i].left;
+    obj.top = aaa[i].top;
+    obj.height_orig = aaa[i].height_orig;
+    obj.width_orig = aaa[i].width_orig ;
+    obj.width =  aaa[i].width;
+    obj.height =aaa[i].height;
+    obj.childId = "image-" + (files.length + 1) + "-" + (files.length + 1);
+    obj.objId = "image-" + (files.length + 1);
+    files.push(obj);
+    let css = '';
+    let imgcss = '';
+    if (typeof obj.left !== "undefined") {
+      css += 'left:' + obj.left + ";";
+    }
+    if (typeof obj.top !== "undefined") {
+      css += 'top:' + obj.top + ";";
+    }
+    if (typeof obj.width !== "undefined") {
+      css += 'width:' + obj.width + ";";
+      imgcss += 'width:' + obj.width + ";";
+    }
+    if (typeof obj.height !== "undefined") {
+      css += 'height:' + obj.height + ";";
+      imgcss += 'height:' + obj.height + ";";
+    }
+
+    css = css.replace(";;", ";");
+    imgcss = imgcss.replace(";;", ";");
+    html = '<div id="' + obj.objId + '" class="target" style="transform: rotate('+aaa[i].rotation+'deg);' + css + '" data-url="' + obj.url + '"\
+       data-deleted="0"  data-endanimate="'+aaa[i].endanimate+'" data-endduration="'+aaa[i].endduration+'" data-animate="'+aaa[i].animate+'" data-duration="'+aaa[i].duration+'"  data-movefrom="'+parseInt(aaa[i].dataMoveFrom)+'" data-moveto="'+parseInt(aaa[i].dataMoveTo)+'"  isLocked="false" isDisabled="false">\
+    <img id="' + obj.childId + '" src="' + obj.url + '" style="' + imgcss + '">\
+       </div>';
+    $("#container").append(html);
+    new Dragable(document.querySelector('#' + obj.objId), {
+      type: "image"
+      , objid: obj.objId
+      , broj: (files.length + 1)
+      , obj: obj,
+      angle:aaa[i].rotation
+      , imageId: document.querySelector('#' + obj.childId)
+      , onClicked: function(type, elem, target, opt) {
+        other(type, elem, target, opt);
+      }
+      , width_orig: obj.width_orig
+    , }).createImg();
+  addKeyframe("slika " + length, obj.objId, vremeTrajanja,parseInt(aaa[i].dataMoveFrom),parseInt(aaa[i].dataMoveTo));
+}else if(aaa[i].type=="video"){
+  obj.type = "video";
+  obj.url = aaa[i].url ;
+  obj.left = aaa[i].left;
+  obj.top = aaa[i].top;
+  obj.height_orig = aaa[i].height_orig;
+  obj.width_orig = aaa[i].width_orig ;
+  obj.width =  aaa[i].width;
+  obj.height =aaa[i].height;
+  obj.duration = aaa[i].duration;
+  obj.childId = "video-" + (files.length + 1) + "-" + (files.length + 1);
+  obj.objId = "video-" + (files.length + 1);
+  files.push(obj);
+  html = '<div id="' + obj.objId + '" data-child="' + obj.childId + '"  data-url="' + obj.url + '"  data-deleted="0" data-endanimate="'+aaa[i].endanimate+'" data-endduration="'+aaa[i].endduration+'"\
+   data-animate="'+aaa[i].animate+'" data-duration="'+aaa[i].duration+'"  data-movefrom="'+parseInt(aaa[i].dataMoveFrom)+'" data-moveto="'+parseInt(aaa[i].dataMoveTo)+'"  data-url="' + obj
+    .url + '"  data-video-duration="' + aaa[i].data_video_duration +
+    '"  class="target" style="top:' + obj.top + ';left:' + obj
+    .top + ';width:' + obj.width + ';height:' + obj.height + ';" isLocked="false" isDisabled="false">\
+<video  id="' + obj.childId + '" style="width:' + obj.width + ';height:' + obj.height + ';"  src="' + obj.url + '">\
+<source src="' + obj.url + '" type="video/mp4">\
+</video>\
+</div>';
+  $("#container").append(html);
+  new Dragable($('#' + obj.objId)[0], {
+    type: "video"
+    , objid: obj.objId
+    , broj: (files.length + 1)
+    , obj: obj
+    , url: obj.url
+    , videiId: obj.childId
+    , childId: obj.childId
+    , onClicked: function(type, elem, target, opt) {
+      other(type, elem, target, opt);
+    }
+    , width_orig:obj.width_orig
+  , }).createVideo();
+    addKeyframe("video " + length, obj.objId, vremeTrajanja,parseInt(aaa[i].dataMoveFrom),parseInt(aaa[i].dataMoveTo));
+}
+  }
+	$("#container").css("background", arg.background);
+	$("#container").css("width", arg.width);
+	$("#container").css("height", arg.height);
+});
+
+function closePopap(id) {
+	$("#" + id).hide();
+}
+let minRangeValueGap = 1;
+const range = document.getElementById("range_track");
+const minval = document.querySelector(".minvalue");
+const maxval = document.querySelector(".maxvalue");
+const rangeInput = document.querySelectorAll("input");
+let minRange, maxRange, minPercentage, maxPercentage;
+let viedit;
+const minRangeFill = () => {
+	range.style.left = (rangeInput[0].value / rangeInput[0].max) * 100 + "%";
+};
+const maxRangeFill = () => {
+	range.style.right = 100 - (rangeInput[1].value / rangeInput[1].max) * 100 + "%";
+};
+const MinVlaueBubbleStyle = () => {
+	minPercentage = (minRange / rangeInput[0].max) * 100;
+	minval.style.left = minPercentage + "%";
+	minval.style.transform = `translate(-${minPercentage / 2}%, -100%)`;
+};
+const MaxVlaueBubbleStyle = () => {
+	maxPercentage = 100 - (maxRange / rangeInput[1].max) * 100;
+	maxval.style.right = maxPercentage + "%";
+	maxval.style.transform = `translate(${maxPercentage / 2}%, 100%)`;
+};
+const setMinValueOutput = (rec = false) => {
+	minRange = parseInt($("#r1").val());
+	if (!rec) {
+		playVideo($("#r1").val());
+	}
+	minval.innerHTML = $("#r1").val();
+};
+const setMaxValueOutput = (rec = false) => {
+	maxRange = parseInt($("#r2").val());
+	if (!rec) {
+		playVideo($("#r2").val());
+	}
+	maxval.innerHTML = $("#r2").val();
+};
+
+function playVideo(val) {
+	document.getElementById("vi-editing").currentTime = val;
+}
+$(document).ready(function() {})
+
+function VideoEdit() {
+	rangeInput[0].value = 0;
+	rangeInput[0].max = parseInt(selectedT.getAttribute("data-video-duration"));
+	rangeInput[1].max = parseInt(selectedT.getAttribute("data-video-duration"));
+	rangeInput[1].value = parseInt(selectedT.getAttribute("data-video-duration"));
+
+	//
+	resizer.hide();
+	let htm = '<video  id="vi-editing" controls   muted  >\
+          <source src="' + selectedT.getAttribute("data-url") + '" type="video/mp4">\
+          </video>';
+	$('.vid-editor').html(htm);
+	const video = document.querySelector('#vi-editing');
+	setMinValueOutput(true);
+	setMaxValueOutput(true);
+	minRangeFill();
+	maxRangeFill();
+	MinVlaueBubbleStyle();
+	MaxVlaueBubbleStyle();
+	video.addEventListener('canplay', function(v) {
+		const duration = video.duration;
+		rangeInput[0].value = 0;
+		rangeInput[1].value = duration;
+		rangeInput[0].max = duration;
+		rangeInput[1].max = duration;
+	}, {
+		once: true
+	})
+	rangeInput[0].addEventListener("input", (e) => {
+		setMinValueOutput();
+		minRangeFill();
+		MinVlaueBubbleStyle();
+		if (maxRange - minRange < minRangeValueGap) {
+			rangeInput[0].value = maxRange - minRangeValueGap;
+			dvideo.currentTime = rangeInput[0].value;
+			setMinValueOutput();
+			minRangeFill();
+			MinVlaueBubbleStyle();
+			e.target.style.zIndex = "2";
+		}
+	});
+	rangeInput[1].addEventListener("input", (e) => {
+		setMaxValueOutput();
+		maxRangeFill();
+		MaxVlaueBubbleStyle();
+		if (maxRange - minRange < minRangeValueGap) {
+			rangeInput[1].value = minRange + minRangeValueGap;
+			video.currentTime = rangeInput[1].value;
+			e.target.style.zIndex = "2";
+			setMaxValueOutput();
+			maxRangeFill();
+			MaxVlaueBubbleStyle();
+		}
+	});
+	$("#video-editor").show();
+}
+const resizeVideo = function() {
+	$("#video-editor").hide();
+	$("#video-svojstava").show()
+	var params = {
+		input: selectedT.getAttribute("data-url").replace('file://', "")
+		, start: parseInt(rangeInput[0].value)
+		, duration: parseInt(rangeInput[1].value) - parseInt(rangeInput[0].value)
+		, output: path.join(tmpDir, '/'+appsetings.scena+'_' + selectedT.getAttribute("data-child") + '.mp4')
+	};
+	if (params.input == params.output) {
+		$("#video-svojstava").hide();
+		return;
+	}
+	ffmpeg.setFfprobePath(ffprobeStatic.path);
+	ffmpeg.setFfmpegPath(pathToFfmpeg);
+	ffmpeg(params.input).setStartTime(params.start).setDuration(params.duration).save(params.output).on('start', function(commandLine) {
+		document.getElementById("start-video").innerHTML = "Počinjem renderisanje ";
+	}).on('progress', function(progress) {
+		document.getElementById("start-video").innerHTML = "Frejm :" + progress.frames + " <br>Fps:" + progress.currentFps + " <br>Vreme :" +
+			progress.timemark;
+	}).on('end', function() {
+		selectedT.setAttribute("data-url", 'file://' + params.output);
+		selectedT.setAttribute("data-video-duration", params.duration);
+		selectedT.setAttribute("data-moveto", params.duration * 1000);
+		let hh = '<video  id="' + selectedT.getAttribute("data-child") + '" style="width:' + selectedT.style.width + ';height:' + selectedT.style
+			.height + ';" src="' + 'file://' + params.output + '">\
+                                    <source src="' + 'file://' + params.output + '" type="video/mp4">\
+                                  </video>';
+		selectedT.innerHTML = hh;
+		$("#video-svojstava").hide();
+	}).on('error', function(err) {
+
+		$("#video-svojstava").hide();
+	})
+};
+
+function showSettings() {
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+		return;
+	}
+	resizer.hide();
+	$("#zzzz").addClass("open");
+	$("#zzzz").html(Settings);
+	const parent = document.querySelector('#color');
+	const picker = new Picker(parent);
+	picker.onChange = function(color) {
+		parent.style.background = color.hex();
+		appsetings.background = color.hex();
+		$("#container").css("background", color.hex());
+	};
+	$("#vremetrajanja").val(appsetings.time);
+	$("#btnvreme").on("click", function() {
+		appsetings.time = $("#vremetrajanja").val();
+		vremeTrajanja = appsetings.time;
+		$("#zzzz").removeClass("open");
+	})
+	document.querySelector('#color').style.background = appsetings.background;
+	$("#app-select__face").on('click', function(e) {
+		if ($("#app-select-dropdown").hasClass("hide")) {
+			$("#app-select-dropdown").removeClass("hide")
+		} else {
+			$("#app-select-dropdown").addClass("hide");
+		}
+	})
+	let checked = '<svg class="app-svg-symbol" width="16px" height="16px"\
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\
+             <use xlink:href="#option-check"></use>\
+           </svg>';
+	let check = document.querySelectorAll(".app-select-option__check");
+	let icon = ""
+		, htnl = "";
+	for (var i = 0; i < check.length; i++) {
+		check[i].innerHTML = '';
+	}
+	let messages = document.querySelectorAll(".app-select-dropdown__option");
+	messages.forEach(message => {
+		if (appsetings.width == message.getAttribute('data-width') && appsetings.height == message.getAttribute('data-height')) {
+			message.querySelector(".app-select-option__check").innerHTML = checked;
+			icon = message.querySelector(".app-console-aspect-ratio-picker-item").innerHTML;
+			htnl = '  <span class="app-select__active-font">\
+                 <div  class="app-console-aspect-ratio-picker-item app-console-aspect-ratio-picker-item--dense">' + icon;
+			htnl += ' </div>\
+               </span>\
+               <span class="app-select__arrows">\
+                 <svg class="app-svg-symbol" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\
+                   <use xlink:href="#select-arrows"></use>\
+                 </svg>\
+               </span>';
+			$("#app-select__face").html(htnl)
+		}
+		message.addEventListener('click', function(e) {
+			$("#container").css("width", $(this).prop("data-width"));
+			$("#container").css("height", $(this).prop("data-height"));
+			appsetings.width = $(this).prop("data-width");
+			appsetings.height = $(this).prop("data-height")
+			//$(".app-select-option__check").html("");
+			let check = document.querySelectorAll(".app-select-option__check");
+			for (var i = 0; i < check.length; i++) {
+				check[i].innerHTML = '';
+			}
+			$("#app-select-dropdown").addClass("hide");
+			this.querySelector(".app-select-option__check").innerHTML = checked;
+			icon = this.querySelector(".app-console-aspect-ratio-picker-item").innerHTML;
+			htnl = '  <span class="app-select__active-font">\
+               <div  class="app-console-aspect-ratio-picker-item app-console-aspect-ratio-picker-item--dense">' + icon;
+			htnl += ' </div>\
+             </span>\
+             <span class="app-select__arrows">\
+               <svg class="app-svg-symbol" width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">\
+                 <use xlink:href="#select-arrows"></use>\
+               </svg>\
+             </span>';
+			$("#app-select__face").html(htnl)
+		}, false);
+	})
+}
+
+function showAnimate() {
+	if (selectedT == null || selectedDiv == null) {
+		$("#zzzz").removeClass("open");
+		return;
+	}
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+		return;
+	}
+	resizer.hide();
+	$("#zzzz").html(AnimateAdd);
+	let selanim = selectedT.getAttribute('data-animate');
+  
+	document.getElementById('anim').value = selanim;
+	let duration = selectedT.getAttribute('data-duration');
+	if (duration != "0") {
+		document.getElementById("timeb").value = duration;
+	}
+   selanim = selectedT.getAttribute('data-endanimate');
+   document.getElementById('endanim').value = selanim;
+   duration = selectedT.getAttribute('data-endduration');
+   if (duration != "0") {
+     document.getElementById("timebk").value = duration;
+   }
+	$("#zzzz").addClass("open");
+	$("#btnanimation").on('click', function(e) {
+		e.preventDefault()
+    if($("#anim").val()!=""){
+		selectedT.setAttribute('data-animate', $("#anim").val());
+		selectedT.setAttribute('data-duration', $("#timeb").val());
+		elementAnimate(selectedT, $("#anim").val(), $("#timeb").val());
+  }else{
+    selectedT.setAttribute('data-animate', '');
+    selectedT.setAttribute('data-duration', '0');
+  }
+      if($("#endanim").val()!=""){
+          selectedT.setAttribute('data-endanimate', $("#endanim").val());
+          selectedT.setAttribute('data-endduration', $("#timebk").val());
+        }else{
+          selectedT.setAttribute('data-endanimate', '');
+          selectedT.setAttribute('data-endduration', '0');
+        }
+    //data-endanimate="'+aaa[i].endanimate+'" data-endduration="'+aaa[i].endduration+'"
+	});
+}
+
+function DeletaAll() {
+	if (selectedT == null || selectedDiv == null) {
+		return;
+	}
+	resizer.hide()
+	selectedT.style.display = "none";
+	selectedT.setAttribute("data-deleted", "1");
+	const currentModel = timeline.getModel();
+	if (currentModel && currentModel.rows) {
+		let modell = {};
+		modell.rows = [];
+		currentModel.rows.forEach((row) => {
+			if (selectedT.getAttribute('id') == row.id) {
+				if (row.keyframes) {
+					deleted.push(row.id);
+					row.keyframes = row.keyframes.filter(function() {
+						return false;
+					});
+				}
+			} else {
+				modell.rows.push(row)
+			}
+		});
+		timeline.setModel(modell);
+		generateHTMLOutlineListNodes(modell.rows);
+	}
+}
+
+function elementAnimate(node, animation, duration, prefix = 'animate__') {
+	new Promise((resolve, reject) => {
+		const animationName = `${prefix}${animation}`;
+		$(node).css("-webkit-animation-duration", duration + 's');
+		$(node).css("animation-duration", duration + 's');
+		$(node).css("-webkit-animation-fill-mode", 'both');
+		$(node).css("animation-fill-mode", 'both');
+		node.classList.add(animationName);
+
+		function AnimationEnd(e) {
+			e.stopPropagation();
+			$(node).remstyle("-webkit-animation-duration");
+			$(node).remstyle("animation-duration");
+			$(node).remstyle("-webkit-animation-fill-mode");
+			$(node).css("animation-fill-mode");
+			node.classList.remove(animationName);
+			resolve('Animation ended');
+		}
+		node.addEventListener('animationend', AnimationEnd, {
+			once: true
+		});
+	});
+}
+Number.prototype.between = function(a, b) {
+	var min = Math.min(a, b)
+		, max = Math.max(a, b);
+	return this > min && this < max;
+};
+
+function VideoCreate() {
+	selectedDiv = null;
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+		return;
+	}
+	$("#v-edit").attr("disabled", "disabled");
+	$("#edit-text").attr("disabled", "disabled");
+	$("#delete-all").attr("disabled", "disabled");
+	$("#animate-all").attr("disabled", "disabled");
+	resizer.hide();
+	$("#zzzz").html(VideoAdd);
+	$("#zzzz").addClass("open");
+	$("#video-creator").on('click', function(e) {
+		e.preventDefault()
+		sendtoipcForVideo();
+	});
+}
+
+function imageCreate() {
+	selectedDiv = null;
+	$("#v-edit").attr("disabled", "disabled");
+	$("#edit-text").attr("disabled", "disabled");
+	$("#delete-all").attr("disabled", "disabled");
+	$("#animate-all").attr("disabled", "disabled");
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+		return;
+	}
+	resizer.hide();
+	$("#zzzz").html(ImageAdd);
+	$("#zzzz").addClass("open");
+	$("#image-creator").on('click', function(e) {
+		sendtoipcForImage();
+	});
+}
+
+function close() {
+	$("#zzzz").removeClass("open");
+	$("#zzzz").html("");
+	selectedT = null;
+	selectedDiv = null;
+	$("#v-edit").attr("disabled", "disabled");
+	$("#edit-text").attr("disabled", "disabled");
+	$("#delete-all").attr("disabled", "disabled");
+	$("#animate-all").attr("disabled", "disabled");
+}
+
+function edit() {
+	if (selectedDiv == null) {
+		if ($("#zzzz").hasClass("open")) {
+			$("#zzzz").removeClass("open");
+		}
+		return;
+	}
+	let elem = selectedT;
+	if (!$("#zzzz").hasClass("open")) {
+		KreateText();
+	}
+	$("#addtextc").css("display", "none");
+	$("#btntextc").css("display", "block");
+	$("#btntextc").removeAttr("disabled");
+	$("#textc").val(elem.innerHTML);
+	document.querySelector('#color').style.background = hexToRGB(elem.style.color);
+	if (elem.style.background != "") {
+		document.querySelector('#bgcolor').style.background = hexToRGB(elem.style.background);
+	} else {
+		if (elem.style.backgroundColor != "") {
+			document.querySelector('#bgcolor').style.background = hexToRGB(elem.style.backgroundColor);
+		} else {
+			document.querySelector('#bgcolor').style.background = '';
+		}
+	}
+	let spading = elem.style.padding;
+	$('#padding').val(spading.replace("px", ""));
+  if(elem.style.fontFamily!=""){
+    document.querySelector("#fontName option[value*='" + elem.style.fontFamily + "']").selected = true;
+  }
+
+	let fontSizes = elem.style.fontSize;
+	fontSizes = fontSizes.replace("px", "");
+	document.querySelector("#fontSize option[value*='" + fontSizes + "']").selected = true;
+	$("#btntextc").off("click");
+	$("#btntextc").on("click", function() {
+		if ($("#textc").val() != "") {
+			elem.innerHTML = $("#textc").val();
+			$("#textc").val('');
+		}
+		elem.style.setProperty('font-family', $('#fontName').val())
+		elem.style.padding = $('#padding').val() + "px";
+		elem.style.background = document.querySelector('#bgcolor').style.background;
+		elem.style.color = document.querySelector('#color').style.background;
+		elem.style.fontSize = $('#fontSize').val() + "px";
+		$("#zzzz").removeClass("open");
+	})
+}
+
+function KreateText(type = 1) {
+	selectedT = null;
+	selectedDiv = null;
+	resizer.hide();
+	$("#zzzz").html(TextAdd);
+	const parent = document.querySelector('#color');
+	const parent1 = document.querySelector('#bgcolor');
+	const picker = new Picker(parent);
+	const picker1 = new Picker(parent1);
+	picker.onChange = function(color) {
+		parent.style.background = color.hex();
+	};
+	picker1.onChange = function(color) {
+		parent1.style.background = color.hex();
+	};
+	document.querySelector('#color').style.background = "#000000";
+	$("#btntextc").css("display", "none");
+	$("#addtextc").on("click", function() {
+		if ($("#textc").val() == '') {
+			return;
+		}
+		let length = files.length + 1;
+		obj = {};
+		obj.type = "text";
+		obj.left = "0px";
+		obj.top = "0px";
+		obj.background = document.querySelector('#bgcolor').style.background;
+		obj.color = document.querySelector('#color').style.background;
+		obj.fontsize = $('#fontSize').val() + "px";
+		obj.fontname = $('#fontName').val();
+		obj.text = $("#textc").val();
+		obj.url = "";
+		obj.width = "auto";
+		obj.height = "auto";
+		obj.childId = "text-" + length + "-" + length;
+		obj.objId = "text-" + length;
+		obj.padding = $('#padding').val() + "px";
+		files.push(obj);
+		$("#textc").val('');
+		if (type == '1') {
+			html = '<div id="' + obj.objId +
+				'" class="target nowrap"  data-multi="0" data-deleted="0" data-endanimate="" data-endduration="0" data-animate="" data-duration="0"  data-movefrom="0" data-moveto="' + (
+					vremeTrajanja * 1000) + '"  style="font-family:' + obj.fontname + ',padding:' + obj.padding + '; left: ' + obj.left + '; top: ' +
+				obj.top + ';z-index:' + (length + 1) + ';width:' + obj.width + ';height:' + obj.height + ';background-color:' + obj.background +
+				';color:' + obj.color + ';padding:' + obj.padding + ';font-size:' + obj.fontsize + '"  isLocked="false" isDisabled="false">' + obj
+				.text + '</div>';
+		} else {
+			html = '<div id="' + obj.objId +
+				'" class="target"  data-multi="1" data-deleted="0"  data-endanimate="" data-endduration="0" data-animate="" data-duration="0"  data-movefrom="0" data-moveto="' + (
+					vremeTrajanja * 1000) + '"  style="font-family:' + obj.fontname + ',padding:' + obj.padding + '; left: ' + obj.left + '; top: ' +
+				obj.top + ';z-index:' + (length + 1) + ';width:' + obj.width + ';height:' + obj.height + ';background-color:' + obj.background +
+				';color:' + obj.color + ';padding:' + obj.padding + ';font-size:' + obj.fontsize + '"  isLocked="false" isDisabled="false">' + obj
+				.text + '</div>';
+		}
+		$("#container").append(html);
+		new Dragable($('#' + obj.objId)[0], {
+			type: "text"
+			, objid: obj.objId
+			, broj: length
+			, multi: type
+			, textDiv: $('#' + obj.objId)[0]
+			, onClicked: function(type, elem, target, opt) {
+				tectC(type, elem, target, opt);
+			}
+		, }).createTaxt();
+		addKeyframe("text " + length, obj.objId, vremeTrajanja);
+		document.getElementById(obj.objId).style.backgroundColor = obj.background;
+		$('#' + obj.objId)[0].style.setProperty('font-family', obj.fontname)
+		$("#zzzz").removeClass("open");
+	})
+	$("#zzzz").addClass("open");
+}
+
+function dodajMultiline() {
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+	} else {
+		KreateText(2);
+		$("#v-edit").attr("disabled", "disabled");
+		$("#addtextc").removeAttr("disabled");
+		$("#btntextc").attr("disabled", "disabled");
+		$("#edit-text").attr("disabled", "disabled");
+		$("#delete-all").attr("disabled", "disabled");
+		$("#animate-all").attr("disabled", "disabled");
+	}
+	selectedT = null;
+	selectedDiv = null;
+}
+
+function dodaj() {
+	if ($("#zzzz").hasClass("open")) {
+		$("#zzzz").removeClass("open");
+	} else {
+		KreateText();
+		$("#v-edit").attr("disabled", "disabled");
+		$("#addtextc").removeAttr("disabled");
+		$("#btntextc").attr("disabled", "disabled");
+		$("#edit-text").attr("disabled", "disabled");
+		$("#delete-all").attr("disabled", "disabled");
+		$("#animate-all").attr("disabled", "disabled");
+	}
+	selectedT = null;
+	selectedDiv = null;
+}
+$(document).ready(function() {
+	$("#container").on("click", function() {
+		$("#animate-all").attr("disabled", "disabled");
+		$("#edit-text").attr("disabled", "disabled");
+		$("#delete-all").attr("disabled", "disabled");
+		$("#v-edit").attr("disabled", "disabled");
+		resizer.hide();
+		selectedT = null;
+		selectedDiv = null;
+		if ($("#zzzz").hasClass("open")) {
+			$("#zzzz").removeClass("open");
+		}
+	});
+})
+
+function other(type, elem, target, opt) {
+	selectedT = target;
+	selectedDiv = elem;
+	if (target.type = "video") {
+		$("#v-edit").removeAttr("disabled");
+	}
+	$("#delete-all").removeAttr("disabled");
+	$("#animate-all").removeAttr("disabled");
+}
+
+function tectC(type, elem, target) {
+	selectedT = target;
+	selectedDiv = elem;
+	$("#v-edit").attr("disabled", "disabled");
+	$("#edit-text").removeAttr("disabled");
+	$("#delete-all").removeAttr("disabled");
+	$("#animate-all").removeAttr("disabled");
+}
+const hexToRGB = function(rgb) {
+	var rgbRegex = /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/;
+	var result, r, g, b, hex = "";
+	if ((result = rgbRegex.exec(rgb))) {
+		r = componentFromStr(result[1], result[2]);
+		g = componentFromStr(result[3], result[4]);
+		b = componentFromStr(result[5], result[6]);
+		hex = "#" + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	}
+	return hex;
+}
+
+function componentFromStr(numStr, percent) {
+	var num = Math.max(0, parseInt(numStr, 10));
+	return percent ? Math.floor(255 * Math.min(100, num) / 100) : Math.min(255, num);
+}
+    </script>
+
+</body>
+
+</html>
